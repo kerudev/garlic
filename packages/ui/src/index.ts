@@ -1,1 +1,1 @@
-export { default as Ingredients } from './Ingredients';
+export { Ingredients, NutritionFacts } from './components';
