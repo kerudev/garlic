@@ -1,16 +1,34 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { FlatCompat } from '@eslint/eslintrc';
+import stylistic from '@stylistic/eslint-plugin';
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  baseDirectory: import.meta.dirname,
 });
 
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-];
+export default [
+  stylistic.configs['recommended'],
 
-export default eslintConfig;
+  ...compat.config({
+    extends: [
+      'next',
+      'next/core-web-vitals',
+      'next/typescript',
+    ],
+    rules: {
+      'import/no-anonymous-default-export': 'off',
+
+      '@stylistic/comma-dangle': 'off',
+      '@stylistic/jsx-one-expression-per-line': 'off',
+
+      '@stylistic/indent': ['error', 2],
+      '@stylistic/semi': ['error', 'always'],
+      '@stylistic/quotes': ['error', 'single'],
+      '@stylistic/object-curly-spacing': ['error', 'always'],
+      '@stylistic/operator-linebreak': ['error', 'before', {
+        overrides: {
+          '=': 'after',
+        }
+      }],
+    }
+  }),
+];
