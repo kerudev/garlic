@@ -1,4 +1,4 @@
-import { Ingredient } from '@garlic/types';
+import { Ingredient, Measure, SystemWeightUnit } from '@garlic/types';
 
 export const vegetables: Ingredient[] = [
   { name: 'onion', measure: { quantity: 1, unit: 'unit' } },
@@ -83,3 +83,5 @@ export const cheesecake: Ingredient[] = [
     }
   },
 ];
+
+export const cheesecakeServing: Measure<SystemWeightUnit> = { quantity: 300, unit: 'g' };
