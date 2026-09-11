@@ -1,10 +1,12 @@
 import type { Ingredient, NutritionFactsKey, NutritionFacts, Measure, SystemWeightUnit } from '@garlic/types';
 
+type Serving = Measure<SystemWeightUnit> | number;
+
 interface NutritionFactsProps {
   ingredients: Ingredient[]
   className?: string
   options?: {
-    serving?: Measure<SystemWeightUnit>
+    servings?: Serving
   }
 }
 
@@ -16,7 +18,7 @@ const rows: NutritionFactsKey[] = [
   'salt',
 ] as const;
 
-const useNutritionInfo = (ingredients: Ingredient[], serving: Measure<SystemWeightUnit> | undefined = undefined): [NutritionFacts, NutritionFacts | null] => {
+const useNutritionInfo = (ingredients: Ingredient[], servings: Serving | undefined = undefined): [NutritionFacts, NutritionFacts | null] => {
   const total: NutritionFacts = {
     measure: { quantity: 0, unit: 'g' },
     calories: { quantity: 0, unit: 'kcal' },
@@ -36,12 +38,20 @@ const useNutritionInfo = (ingredients: Ingredient[], serving: Measure<SystemWeig
     });
   });
 
-  if (typeof serving === 'undefined') return [total, null];
+  console.log(servings);
 
-  const perServing: NutritionFacts = { ...structuredClone(total), measure: serving };
+  if (typeof servings === 'undefined') return [total, null];
 
-  const ratio = perServing.measure.quantity / total.measure.quantity;
+  const ratio = (typeof servings === 'number')
+    ? 1 / servings
+    : servings.quantity / total.measure.quantity;
+
+  const perServing: NutritionFacts = structuredClone(total);
   rows.forEach(row => perServing[row].quantity *= ratio);
+
+  perServing.measure = (typeof servings === 'number')
+    ? { quantity: total.measure.quantity / servings, unit: total.measure.unit }
+    : servings;
 
   total.calories.quantity = Math.round(total.calories.quantity);
   perServing.calories.quantity = Math.round(perServing.calories.quantity);
@@ -50,15 +60,20 @@ const useNutritionInfo = (ingredients: Ingredient[], serving: Measure<SystemWeig
 };
 
 export default function NutritionFacts({ ingredients, className, options }: NutritionFactsProps) {
-  const [total, serving] = useNutritionInfo(ingredients, options?.serving);
+  const [total, perServing] = useNutritionInfo(ingredients, options?.servings);
 
   return (
     <table className={className}>
       <thead className="h-[42] w-[120]">
         <tr className="[&>*]:px-[8px] [&>*]:py-[8px]">
+          <th></th>
+          <th className="text-right !pr-4 w-50">Total</th>
+          {perServing && <th className="text-right !pl-0.5 w-50">Serving</th>}
+        </tr>
+        <tr className="[&>*]:px-[8px] [&>*]:py-[8px]">
           <th className="text-left">Values</th>
           <th className="text-right !pr-4 w-50">{total.measure.quantity} {total.measure.unit}</th>
-          {serving && <th className="text-right !pl-0.5 w-50">{serving.measure.quantity} {serving.measure.unit} (serving)</th>}
+          {perServing && <th className="text-right !pl-0.5 w-50">{perServing.measure.quantity} {perServing.measure.unit}</th>}
         </tr>
       </thead>
       <tbody>
@@ -66,7 +81,7 @@ export default function NutritionFacts({ ingredients, className, options }: Nutr
           <tr key={row} className="[&>*]:px-[8px] [&>*]:py-[8px]">
             <td className="text-left">{row}</td>
             <td className="text-right !pr-4">{parseFloat(total[row].quantity.toFixed(2))} {total[row].unit}</td>
-            {serving && <td className="text-right !pl-0.5">{parseFloat(serving[row].quantity.toFixed(2))} {serving[row].unit}</td>}
+            {perServing && <td className="text-right !pl-0.5">{parseFloat(perServing[row].quantity.toFixed(2))} {perServing[row].unit}</td>}
           </tr>
         ))}
       </tbody>
