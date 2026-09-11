@@ -1,6 +1,6 @@
 // fluid
-declare const metricFluidUnits: readonly ['l', 'ml'];
-declare const imperialFluidUnits: readonly ['fl oz', 'tsp', 'tbsp', 'cup'];
+declare const metricFluidUnits: readonly ["l", "ml"];
+declare const imperialFluidUnits: readonly ["fl oz", "tsp", "tbsp", "cup"];
 
 export type MetricFluidUnit = typeof metricFluidUnits[number];
 export type ImperialFluidUnit = typeof imperialFluidUnits[number];
@@ -8,17 +8,17 @@ export type ImperialFluidUnit = typeof imperialFluidUnits[number];
 export type FluidUnit = MetricFluidUnit | ImperialFluidUnit;
 
 // weight
-declare const metricWeightUnits: readonly ['kg', 'g'];
-declare const imperialWeightUnits: readonly ['lb', 'oz', 'cup'];
+declare const metricWeightUnits: readonly ["kg", "g"];
+declare const imperialWeightUnits: readonly ["lb", "oz", "cup"];
 declare const unitaryWeightUnits: readonly [
-  'unit',
-  'head',
-  'leaf',
-  'clove',
-  'piece',
-  'slice',
-  'ounce',
-  'pinch'
+  "unit",
+  "head",
+  "leaf",
+  "clove",
+  "piece",
+  "slice",
+  "ounce",
+  "pinch"
 ];
 
 export type MetricWeightUnit = typeof metricWeightUnits[number];
@@ -33,16 +33,16 @@ export type WeightUnit =
   | SystemWeightUnit
   | UnitaryWeightUnit;
 
-export type MetricTemperatureUnit = 'C';
-export type ImperialTemperatureUnit = 'F';
+export type MetricTemperatureUnit = "C";
+export type ImperialTemperatureUnit = "F";
 export type TemperatureUnit = MetricTemperatureUnit | ImperialTemperatureUnit;
 
 // energy
-declare const caloriesUnits: readonly ['kcal', 'kJ'];
+declare const caloriesUnits: readonly ["kcal", "kJ"];
 export type CaloriesUnit = typeof caloriesUnits[number];
 
 // unit systems
-export type UnitSystem = 'metric' | 'imperial';
+export type UnitSystem = "metric" | "imperial";
 export type MeasureUnit = WeightUnit | FluidUnit;
 
 export type MetricUnit =
@@ -98,4 +98,4 @@ export type NutritionFacts = {
   salt: Measure<WeightUnit>
 };
 
-type NutritionFactsKey = keyof Omit<NutritionFacts, 'measure'>;
+type NutritionFactsKey = keyof Omit<NutritionFacts, "measure">;

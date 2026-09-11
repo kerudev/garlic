@@ -1,4 +1,4 @@
-import type { Ingredient } from '@garlic/types';
+import type { Ingredient } from "@garlic/types";
 
 interface IngredientsProps {
   ingredients: Ingredient[]
