@@ -13,7 +13,8 @@ export default function Page() {
           className="bg-green-500 text-white p-4 rounded-lg w-auto"
           ingredients={cheesecake}
           options={{
-            serving: cheesecakeServing
+            // servings: cheesecakeServing
+            servings: 12
           }}
         />
       </main>
