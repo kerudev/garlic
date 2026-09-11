@@ -25,9 +25,14 @@ export type MetricWeightUnit = typeof metricWeightUnits[number];
 export type ImperialWeightUnit = typeof imperialWeightUnits[number];
 export type UnitaryWeightUnit = typeof unitaryWeightUnits[number];
 
-export type WeightUnit = MetricWeightUnit | ImperialWeightUnit | UnitaryWeightUnit;
+export type SystemWeightUnit =
+  | MetricWeightUnit
+  | ImperialWeightUnit;
 
-// temperature
+export type WeightUnit =
+  | SystemWeightUnit
+  | UnitaryWeightUnit;
+
 export type MetricTemperatureUnit = 'C';
 export type ImperialTemperatureUnit = 'F';
 export type TemperatureUnit = MetricTemperatureUnit | ImperialTemperatureUnit;
