@@ -1,4 +1,4 @@
-import { CaloriesUnit, Ingredient, UnitSystem } from '@garlic/types';
+import { CaloriesUnit, Ingredient, UnitSystem } from "@garlic/types";
 
 interface UnitConversionProps {
   ingredients: Ingredient[]

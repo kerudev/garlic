@@ -1,4 +1,4 @@
-import type { Ingredient, NutritionFactsKey, NutritionFacts, Measure, SystemWeightUnit } from '@garlic/types';
+import type { Ingredient, NutritionFactsKey, NutritionFacts, Measure, SystemWeightUnit } from "@garlic/types";
 
 type Serving = Measure<SystemWeightUnit> | number;
 
@@ -11,21 +11,21 @@ interface NutritionFactsProps {
 }
 
 const rows: NutritionFactsKey[] = [
-  'calories',
-  'fat',
-  'carbs',
-  'protein',
-  'salt',
+  "calories",
+  "fat",
+  "carbs",
+  "protein",
+  "salt",
 ] as const;
 
 const useNutritionInfo = (ingredients: Ingredient[], servings: Serving | undefined = undefined): [NutritionFacts, NutritionFacts | null] => {
   const total: NutritionFacts = {
-    measure: { quantity: 0, unit: 'g' },
-    calories: { quantity: 0, unit: 'kcal' },
-    fat: { quantity: 0, unit: 'g' },
-    carbs: { quantity: 0, unit: 'g' },
-    protein: { quantity: 0, unit: 'g' },
-    salt: { quantity: 0, unit: 'g' },
+    measure: { quantity: 0, unit: "g" },
+    calories: { quantity: 0, unit: "kcal" },
+    fat: { quantity: 0, unit: "g" },
+    carbs: { quantity: 0, unit: "g" },
+    protein: { quantity: 0, unit: "g" },
+    salt: { quantity: 0, unit: "g" },
   };
 
   ingredients.forEach((ingredient: Ingredient) => {
@@ -40,16 +40,16 @@ const useNutritionInfo = (ingredients: Ingredient[], servings: Serving | undefin
 
   console.log(servings);
 
-  if (typeof servings === 'undefined') return [total, null];
+  if (typeof servings === "undefined") return [total, null];
 
-  const ratio = (typeof servings === 'number')
+  const ratio = (typeof servings === "number")
     ? 1 / servings
     : servings.quantity / total.measure.quantity;
 
   const perServing: NutritionFacts = structuredClone(total);
   rows.forEach(row => perServing[row].quantity *= ratio);
 
-  perServing.measure = (typeof servings === 'number')
+  perServing.measure = (typeof servings === "number")
     ? { quantity: total.measure.quantity / servings, unit: total.measure.unit }
     : servings;
 

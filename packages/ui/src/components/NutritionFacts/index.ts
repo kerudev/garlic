@@ -1,1 +1,1 @@
-export { default as NutritionFacts } from './NutritionFacts';
+export { default as NutritionFacts } from "./NutritionFacts";

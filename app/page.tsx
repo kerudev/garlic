@@ -1,5 +1,5 @@
-import { cheesecake, cheesecakeServing, vegetables } from './ingredients';
-import { Ingredients, NutritionFacts } from '@garlic/ui';
+import { cheesecake, cheesecakeServing, vegetables } from "./ingredients";
+import { Ingredients, NutritionFacts } from "@garlic/ui";
 
 export default function Page() {
   return (
