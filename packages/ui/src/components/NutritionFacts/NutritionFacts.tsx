@@ -18,7 +18,7 @@ const rows: NutritionFactsKey[] = [
   "salt",
 ] as const;
 
-const useNutritionInfo = (ingredients: Ingredient[], servings: Serving | undefined = undefined): [NutritionFacts, NutritionFacts | null] => {
+const useNutritionInfo = (ingredients: Ingredient[], servings?: Serving): [NutritionFacts, NutritionFacts | null] => {
   const total: NutritionFacts = {
     measure: { quantity: 0, unit: "g" },
     calories: { quantity: 0, unit: "kcal" },
@@ -37,8 +37,6 @@ const useNutritionInfo = (ingredients: Ingredient[], servings: Serving | undefin
       total.measure.quantity += facts.measure.quantity;
     });
   });
-
-  console.log(servings);
 
   if (typeof servings === "undefined") return [total, null];
 
@@ -77,8 +75,8 @@ export default function NutritionFacts({ ingredients, className, options }: Nutr
         </tr>
       </thead>
       <tbody>
-        {rows.map(row => (
-          <tr key={row} className="[&>*]:px-[8px] [&>*]:py-[8px]">
+        {rows.map((row, idx) => (
+          <tr key={`fact-${row}-${idx}`} className="[&>*]:px-[8px] [&>*]:py-[8px]">
             <td className="text-left">{row}</td>
             <td className="text-right !pr-4">{parseFloat(total[row].quantity.toFixed(2))} {total[row].unit}</td>
             {perServing && <td className="text-right !pl-0.5">{parseFloat(perServing[row].quantity.toFixed(2))} {perServing[row].unit}</td>}
