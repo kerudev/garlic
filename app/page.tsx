@@ -1,5 +1,5 @@
 import { cheesecake, cheesecakeServing, vegetables } from "./ingredients";
-import { Ingredients, NutritionFacts } from "@garlic/ui";
+import { Ingredients, NutritionFacts, Steps } from "@garlic/ui";
 
 export default function Page() {
   return (
@@ -16,6 +16,15 @@ export default function Page() {
             // servings: cheesecakeServing
             servings: 12
           }}
+        />
+        <Steps
+          className="bg-amber-500 text-white p-4 rounded-lg"
+          steps={[
+            "Mix the liquids",
+            "Add in the solids",
+            "Let rest for 10 minutes",
+            "Bake at 150C for 20 minutes",
+          ]}
         />
       </main>
     </div>
