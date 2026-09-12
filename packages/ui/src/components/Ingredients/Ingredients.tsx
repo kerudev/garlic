@@ -11,7 +11,7 @@ export default function Ingredients({ ingredients, className }: IngredientsProps
       <h2 className="text-2xl font-bold mb-2">Ingredients</h2>
       <ul className="list-disc list-inside">
         {ingredients.map((ingredient, index) => (
-          <li key={index}>
+          <li key={`ingredient-${index}`}>
             {ingredient.name} ({ingredient.measure.quantity} {ingredient.measure.unit})
           </li>
         ))}
