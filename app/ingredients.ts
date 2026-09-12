@@ -85,3 +85,10 @@ export const cheesecake: Ingredient[] = [
 ];
 
 export const cheesecakeServing: Measure<SystemWeightUnit> = { quantity: 300, unit: "g" };
+
+export const steps = [
+  "Mix the liquids",
+  "Add in the solids",
+  "Let rest for 10 minutes",
+  "Bake at 150C for 20 minutes",
+];
