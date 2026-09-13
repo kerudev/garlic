@@ -46,3 +46,4 @@ Emojis:
 - `docs`: 📄
 - `conf`: ⚙️
 - `style`: 🎨
+- `refactor`: 🔄
