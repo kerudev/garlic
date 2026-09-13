@@ -1,90 +1,104 @@
-import { Ingredient, Measure, SystemWeightUnit } from "@garlic/types";
+import { Ingredient, Measure, NutritionFacts, SystemWeightUnit } from "@garlic/types";
 
-export const vegetables: Ingredient[] = [
-  { name: "onion", measure: { quantity: 1, unit: "unit" } },
-  { name: "garlic", measure: { quantity: 3, unit: "head" } },
+export const vegetablesString = [
+  { name: "onion", measure: "1 unit" },
+  { name: "garlic", measure: "3 head" },
 ];
 
-export const cheesecake: Ingredient[] = [
+export const vegetables: Ingredient[] = vegetablesString.map(obj => ({ name: obj.name, measure: Measure.fromString(obj.measure) }));
+
+export const cheesecakeIngredients = [
   {
     name: "cream cheese",
-    measure: { quantity: 500, unit: "g" },
+    measure: "500 g",
     nutritionFacts: {
-      measure: { quantity: 100, unit: "g" },
-      calories: { quantity: 244, unit: "kcal" },
-      fat: { quantity: 24, unit: "g" },
-      carbs: { quantity: 2.8, unit: "g" },
-      protein: { quantity: 4.1, unit: "g" },
-      salt: { quantity: 0.87, unit: "g" },
+      measure: "100 g",
+      calories: "244 kcal",
+      fat: "24 g",
+      carbs: "2.8 g",
+      protein: "4.1 g",
+      salt: "0.87 g",
     }
   },
   {
     name: "cream",
-    measure: { quantity: 250, unit: "g" },
+    measure: "250 g",
     nutritionFacts: {
-      measure: { quantity: 100, unit: "g" },
-      calories: { quantity: 335, unit: "kcal" },
-      fat: { quantity: 35, unit: "g" },
-      carbs: { quantity: 3.1, unit: "g" },
-      protein: { quantity: 2, unit: "g" },
-      salt: { quantity: 0.1, unit: "g" },
+      measure: "100 g",
+      calories: "335 kcal",
+      fat: "35 g",
+      carbs: "3.1 g",
+      protein: "2 g",
+      salt: "0.1 g",
     }
   },
   {
     name: "egg",
-    measure: { quantity: 5, unit: "unit" },
+    measure: "5 unit",
     nutritionFacts: {
-      measure: { quantity: 100, unit: "g" },
-      calories: { quantity: 150, unit: "kcal" },
-      fat: { quantity: 11.1, unit: "g" },
-      carbs: { quantity: 0.5, unit: "g" },
-      protein: { quantity: 12.5, unit: "g" },
-      salt: { quantity: 0.36, unit: "g" },
+      measure: "100 g",
+      calories: "150 kcal",
+      fat: "11.1 g",
+      carbs: "0.5 g",
+      protein: "12.5 g",
+      salt: "0.36 g",
     }
   },
   {
     name: "sugar",
-    measure: { quantity: 200, unit: "g" },
+    measure: "200 g",
     nutritionFacts: {
-      measure: { quantity: 100, unit: "g" },
-      calories: { quantity: 400, unit: "kcal" },
-      fat: { quantity: 0, unit: "g" },
-      carbs: { quantity: 100, unit: "g" },
-      protein: { quantity: 0, unit: "g" },
-      salt: { quantity: 0, unit: "g" },
+      measure: "100 g",
+      calories: "400 kcal",
+      fat: "0 g",
+      carbs: "100 g",
+      protein: "0 g",
+      salt: "0 g",
     }
   },
   {
     name: "white chocolate",
-    measure: { quantity: 250, unit: "g" },
+    measure: "250 g",
     nutritionFacts: {
-      measure: { quantity: 100, unit: "g" },
-      calories: { quantity: 549, unit: "kcal" },
-      fat: { quantity: 33, unit: "g" },
-      carbs: { quantity: 55, unit: "g" },
-      protein: { quantity: 7.9, unit: "g" },
-      salt: { quantity: 0.3, unit: "g" },
+      measure: "100 g",
+      calories: "549 kcal",
+      fat: "33 g",
+      carbs: "55 g",
+      protein: "7.9 g",
+      salt: "0.3 g",
     }
   },
   {
     name: "vanilla extract",
-    measure: { quantity: 1, unit: "tbsp" },
+    measure: "1 tbsp",
   },
   {
     name: "flour",
-    measure: { quantity: 10, unit: "g" },
+    measure: "10 g",
     nutritionFacts: {
-      measure: { quantity: 100, unit: "g" },
-      calories: { quantity: 344, unit: "kcal" },
-      fat: { quantity: 1.4, unit: "g" },
-      carbs: { quantity: 72, unit: "g" },
-      protein: { quantity: 10, unit: "g" },
-      salt: { quantity: 0, unit: "g" },
+      measure: "100 g",
+      calories: "344 kcal",
+      fat: "1.4 g",
+      carbs: "72 g",
+      protein: "10 g",
+      salt: "0 g",
     }
   },
 ];
 
-export const cheesecakeServing: Measure<SystemWeightUnit> = { quantity: 300, unit: "g" };
+export const cheesecake = cheesecakeIngredients.map((obj) => {
+  const ingredient: Ingredient = { name: obj.name, measure: Measure.fromString(obj.measure) };
+
+  if (obj.nutritionFacts !== undefined) {
+    if (obj.nutritionFacts !== undefined) {
+      ingredient.nutritionFacts = NutritionFacts.fromObject(obj.nutritionFacts);
+    }
+  }
+
+  return ingredient;
+});
+
+export const cheesecakeServing = Measure.fromString<SystemWeightUnit>("300 g");
 
 export const steps = [
   "Mix the liquids",

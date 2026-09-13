@@ -1,4 +1,4 @@
-import type { Ingredient, NutritionFactsKey, NutritionFacts, Measure, SystemWeightUnit } from "@garlic/types";
+import { Ingredient, NutritionFactsKey, Measure, SystemWeightUnit, NutritionFacts as NutritionFactsType } from "@garlic/types";
 
 type Serving = Measure<SystemWeightUnit> | number;
 
@@ -18,15 +18,15 @@ const rows: NutritionFactsKey[] = [
   "salt",
 ] as const;
 
-const useNutritionInfo = (ingredients: Ingredient[], servings?: Serving): [NutritionFacts, NutritionFacts | null] => {
-  const total: NutritionFacts = {
+const getNutritionInfo = (ingredients: Ingredient[], servings?: Serving): [NutritionFactsType, NutritionFactsType | null] => {
+  const total: NutritionFactsType = NutritionFactsType.fromRaw({
     measure: { quantity: 0, unit: "g" },
     calories: { quantity: 0, unit: "kcal" },
     fat: { quantity: 0, unit: "g" },
     carbs: { quantity: 0, unit: "g" },
     protein: { quantity: 0, unit: "g" },
     salt: { quantity: 0, unit: "g" },
-  };
+  });
 
   ingredients.forEach((ingredient: Ingredient) => {
     const facts = ingredient.nutritionFacts;
@@ -44,11 +44,11 @@ const useNutritionInfo = (ingredients: Ingredient[], servings?: Serving): [Nutri
     ? 1 / servings
     : servings.quantity / total.measure.quantity;
 
-  const perServing: NutritionFacts = structuredClone(total);
+  const perServing: NutritionFactsType = structuredClone(total);
   rows.forEach(row => perServing[row].quantity *= ratio);
 
   perServing.measure = (typeof servings === "number")
-    ? { quantity: total.measure.quantity / servings, unit: total.measure.unit }
+    ? Measure.fromObject({ quantity: total.measure.quantity / servings, unit: total.measure.unit })
     : servings;
 
   total.calories.quantity = Math.round(total.calories.quantity);
@@ -58,7 +58,7 @@ const useNutritionInfo = (ingredients: Ingredient[], servings?: Serving): [Nutri
 };
 
 export default function NutritionFacts({ ingredients, className, options }: NutritionFactsProps) {
-  const [total, perServing] = useNutritionInfo(ingredients, options?.servings);
+  const [total, perServing] = getNutritionInfo(ingredients, options?.servings);
 
   return (
     <table className={className}>
