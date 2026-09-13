@@ -1,7 +1,16 @@
 {
   "name": "@garlic/types",
   "version": "0.0.1",
-  "main": "src/index.d.ts",
-  "types": "src/index.d.ts",
-  "description": "Types for garlic"
+  "description": "Types for garlic",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc"
+  }
 }
