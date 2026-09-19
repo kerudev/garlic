@@ -1,2 +1,2 @@
-export { Ingredients, NutritionFacts, Steps } from "./components";
+export { Ingredients, NutritionFacts, Steps, Definition } from "./components";
 export { useUnitConversion } from "./hooks";

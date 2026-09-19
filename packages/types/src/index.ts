@@ -87,11 +87,11 @@ export class Measure<T extends MeasureUnit> {
     this.unit = unit;
   }
 
-  static fromObject<T extends MeasureUnit>(obj: { quantity: number, unit: T }): Measure<T> {
+  static fromObject<T extends MeasureUnit>(obj: MeasureObject<T>): Measure<T> {
     return new Measure(obj.quantity, obj.unit);
   }
 
-  static fromString<T extends MeasureUnit>(measure: string): Measure<MeasureUnit> {
+  static fromString<T extends MeasureUnit>(measure: string): Measure<T> {
     const parts = measure.split(" ", 2);
 
     const quantity = Number(parts[0]);
