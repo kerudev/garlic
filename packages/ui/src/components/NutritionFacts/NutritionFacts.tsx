@@ -43,7 +43,7 @@ const getNutritionInfo = (ingredients: Ingredient[], servings?: Serving): [Nutri
     });
   });
 
-  if (typeof servings === "undefined") return [total, null];
+  if (typeof servings === "undefined" || servings === 0) return [total, null];
 
   const ratio = (typeof servings === "number")
     ? 1 / servings
@@ -78,7 +78,11 @@ export default function NutritionFacts({ ingredients, className, options }: Nutr
   const [total, perServing] = getNutritionInfo(ingredients, options?.servings);
 
   const [nServings, isRounded] = getServings(total.measure.quantity, options?.servings);
-  const servingsText = nServings && isRounded ? `${nServings} servings` : `${nServings} aprox. servings`;
+  const servingsText = nServings
+    ? isRounded
+      ? `${nServings} servings`
+      : `${nServings} aprox. servings`
+    : "";
 
   return (
     <table className={className}>
@@ -86,7 +90,7 @@ export default function NutritionFacts({ ingredients, className, options }: Nutr
         {/* Iterate over each row */}
         <tr className="[&>*]:px-[8px] [&>*]:py-[8px] align-top">
           <th></th>
-          <th className="rounded-tl-lg text-right !pr-4 w-50">Total<br />({servingsText})</th>
+          <th className="text-right !pr-4 w-50">Total{servingsText && <><br />{servingsText}</>}</th>
           {perServing && <th className="text-right !pl-0.5 w-50">Per serving</th>}
         </tr>
         <tr className="[&>*]:px-[8px] [&>*]:py-[8px]">
