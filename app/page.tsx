@@ -1,11 +1,133 @@
 import { cheesecake, cheesecakeServing, steps, vegetables } from "./ingredients";
-import { Ingredients, NutritionFacts, Steps } from "@garlic/ui";
+import { Definition, Ingredients, NutritionFacts, Steps } from "@garlic/ui";
 
 export default function Page() {
   return (
-    <div className="min-h-screen p-8 font-[family-name:var(--font-geist-sans)] flex gap-4">
-      <main className="flex flex-col row-start-2 sm:items-start">
+    <div className="min-h-screen flex items-center justify-center">
+      <main className="p-8 font-[family-name:var(--font-geist-sans)] gap-4 text-black flex flex-col">
         <h1 className="text-2xl text-black font-bold mb-4">Component showcase</h1>
+
+        <h2 className="text-xl text-black font-bold mb-4">Definition</h2>
+
+        <h3 className="text-l text-black font-bold mb-4">All definition positions</h3>
+        <div className="flex flex-col gap-32">
+          {/* bottom */}
+          <div className="grid grid-cols-3 gap-32 justify-items-center">
+            <Definition
+              definition="Prevents garlic from burning"
+              className="bg-amber-500 text-white p-4 rounded-lg"
+              tooltip={{
+                position: "bottom-left",
+                className: "bg-fuchsia-200 text-black p-4 rounded-lg",
+                show: true,
+              }}
+            >
+              bottom-left
+            </Definition>
+            <Definition
+              definition="Prevents garlic from burning"
+              className="bg-amber-500 text-white p-4 rounded-lg"
+              tooltip={{
+                position: "bottom",
+                className: "bg-fuchsia-200 text-black p-4 rounded-lg",
+                show: true,
+              }}
+            >
+              bottom
+            </Definition>
+            <Definition
+              definition="Prevents garlic from burning"
+              className="bg-amber-500 text-white p-4 rounded-lg"
+              tooltip={{
+                position: "bottom-right",
+                className: "bg-fuchsia-200 text-black p-4 rounded-lg",
+                show: true,
+              }}
+            >
+              bottom-right
+            </Definition>
+          </div>
+
+          {/* left - right */}
+          <div className="grid grid-cols-3 gap-32">
+            <Definition
+              definition="Prevents garlic from burning"
+              className="bg-amber-500 text-white p-4 rounded-lg justify-self-start"
+              tooltip={{
+                position: "left",
+                className: "bg-fuchsia-200 text-black p-4 rounded-lg",
+                show: true,
+              }}
+            >
+              left
+            </Definition>
+            <div></div>
+            <Definition
+              definition="Prevents garlic from burning"
+              className="bg-amber-500 text-white p-4 rounded-lg justify-self-end"
+              tooltip={{
+                position: "right",
+                className: "bg-fuchsia-200 text-black p-4 rounded-lg",
+                show: true,
+              }}
+            >
+              right
+            </Definition>
+          </div>
+
+          {/* top */}
+          <div className="grid grid-cols-3 gap-32 justify-items-center">
+            <Definition
+              definition="Prevents garlic from burning"
+              className="bg-amber-500 text-white p-4 rounded-lg"
+              tooltip={{
+                position: "top-left",
+                className: "bg-fuchsia-200 text-black p-4 rounded-lg",
+                show: true,
+              }}
+            >
+              top-left
+            </Definition>
+            <Definition
+              definition="Prevents garlic from burning"
+              className="bg-amber-500 text-white p-4 rounded-lg"
+              tooltip={{
+                position: "top",
+                className: "bg-fuchsia-200 text-black p-4 rounded-lg",
+                show: true,
+              }}
+            >
+              top
+            </Definition>
+            <Definition
+              definition="Prevents garlic from burning"
+              className="bg-amber-500 text-white p-4 rounded-lg"
+              tooltip={{
+                position: "top-right",
+                className: "bg-fuchsia-200 text-black p-4 rounded-lg",
+                show: true,
+              }}
+            >
+              top-right
+            </Definition>
+          </div>
+        </div>
+
+        <h3 className="text-l text-black font-bold mb-4">Inline definition</h3>
+        <span className="relative items-center">
+          Cook the garlic with its{" "}
+          <Definition
+            definition="Prevents garlic from burning"
+            className="bg-amber-500 text-white p-4 rounded-lg"
+            tooltip={{
+              position: "top",
+              className: "bg-fuchsia-200 text-black p-4 rounded-lg",
+            }}
+          >
+            right
+          </Definition>
+          {" "}for 1 minute.
+        </span>
 
         <h2 className="text-xl text-black font-bold mb-4">Ingredients</h2>
 
