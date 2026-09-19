@@ -124,7 +124,7 @@ export default function Page() {
               className: "bg-fuchsia-200 text-black p-4 rounded-lg",
             }}
           >
-            right
+            skin on
           </Definition>
           {" "}for 1 minute.
         </span>
@@ -138,6 +138,11 @@ export default function Page() {
 
         <h2 className="text-xl text-black font-bold mb-4">NutritionFacts</h2>
 
+        <h3 className="text-l text-black font-bold mb-4">Without servings</h3>
+        <NutritionFacts
+          className="bg-green-500 text-white p-4 rounded-lg w-auto"
+          ingredients={cheesecake}
+        />
         <h3 className="text-l text-black font-bold mb-4">Servings as an object</h3>
         <NutritionFacts
           className="bg-green-500 text-white p-4 rounded-lg w-auto"
@@ -148,7 +153,7 @@ export default function Page() {
         <NutritionFacts
           className="bg-green-500 text-white p-4 rounded-lg w-auto"
           ingredients={cheesecake}
-          options={{ servings: 12 }}
+          options={{ servings: 16 }}
         />
 
         <h2 className="text-xl text-black font-bold mb-4">NutritionFacts</h2>

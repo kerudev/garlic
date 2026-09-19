@@ -43,6 +43,7 @@ git commit -m "📄 docs: removed whitespaces"
 Emojis:
 
 - `feat`: 🧩
+- `fix`: 🔧
 - `docs`: 📄
 - `conf`: ⚙️
 - `style`: 🎨

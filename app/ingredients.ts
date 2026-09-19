@@ -98,7 +98,7 @@ export const cheesecake = cheesecakeIngredients.map((obj) => {
   return ingredient;
 });
 
-export const cheesecakeServing = Measure.fromString<SystemWeightUnit>("300 g");
+export const cheesecakeServing = Measure.fromString<SystemWeightUnit>("125 g");
 
 export const steps = [
   "Mix the liquids",
