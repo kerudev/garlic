@@ -140,18 +140,30 @@ export default function Page() {
 
         <h3 className="text-l text-black font-bold mb-4">Without servings</h3>
         <NutritionFacts
-          className="bg-green-500 text-white p-4 rounded-lg w-auto"
+          styles={{
+            table: "text-white p-4 w-full",
+            thead: "h-[42] w-[120]",
+            tr: "[&>*]:px-[8px] [&>*]:py-[8px] odd:bg-green-500 even:bg-green-400"
+          }}
           ingredients={cheesecake}
         />
         <h3 className="text-l text-black font-bold mb-4">Servings as an object</h3>
         <NutritionFacts
-          className="bg-green-500 text-white p-4 rounded-lg w-auto"
+          styles={{
+            table: "text-white p-4 w-full",
+            thead: "h-[42] w-[120]",
+            tr: "[&>*]:px-[8px] [&>*]:py-[8px] odd:bg-green-500 even:bg-green-400"
+          }}
           ingredients={cheesecake}
           options={{ servings: cheesecakeServing }}
         />
         <h3 className="text-l text-black font-bold mb-4">Servings as a number</h3>
         <NutritionFacts
-          className="bg-green-500 text-white p-4 rounded-lg w-auto"
+          styles={{
+            table: "text-white p-4 w-full",
+            thead: "h-[42] w-[120]",
+            tr: "[&>*]:px-[8px] [&>*]:py-[8px] odd:bg-green-500 even:bg-green-400",
+          }}
           ingredients={cheesecake}
           options={{ servings: 16 }}
         />

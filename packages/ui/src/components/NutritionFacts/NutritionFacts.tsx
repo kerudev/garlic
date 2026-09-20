@@ -2,9 +2,18 @@ import { Ingredient, NutritionFactsKey, Measure, SystemWeightUnit, NutritionFact
 
 type Serving = Measure<SystemWeightUnit> | number;
 
+interface NutritionFactsStyles {
+  table?: string
+  thead?: string
+  tbody?: string
+  tr?: string
+  th?: string
+  td?: string
+}
+
 interface NutritionFactsProps {
   ingredients: Ingredient[]
-  className?: string
+  styles?: NutritionFactsStyles
   options?: {
     servings?: Serving
   }
@@ -74,7 +83,7 @@ const getServings = (total: number, serving?: Serving): [number, boolean] => {
   return [Math.round(s), true];
 };
 
-export default function NutritionFacts({ ingredients, className, options }: NutritionFactsProps) {
+export default function NutritionFacts({ ingredients, styles, options }: NutritionFactsProps) {
   const [total, perServing] = getNutritionInfo(ingredients, options?.servings);
 
   const [nServings, isRounded] = getServings(total.measure.quantity, options?.servings);
@@ -85,25 +94,23 @@ export default function NutritionFacts({ ingredients, className, options }: Nutr
     : "";
 
   return (
-    <table className={className}>
-      <thead className="h-[42] w-[120]">
-        {/* Iterate over each row */}
-        <tr className="[&>*]:px-[8px] [&>*]:py-[8px] align-top">
+    <table className={`${styles?.table ? styles.table : ""} rounded-lg overflow-hidden`}>
+      <thead className={styles?.thead}>
+        <tr className={`${styles?.tr ? styles.tr : ""} align-top`}>
           <th></th>
           <th className="text-right !pr-4 w-50">Total{servingsText && <><br />{servingsText}</>}</th>
           {perServing && <th className="text-right !pl-0.5 w-50">Per serving</th>}
         </tr>
-        <tr className="[&>*]:px-[8px] [&>*]:py-[8px]">
+        <tr className={styles?.tr}>
           <th className="text-left">Values</th>
           <th className="text-right !pr-4 w-50">{total.measure.quantity} {total.measure.unit}</th>
           {perServing && <th className="text-right !pl-0.5 w-50">{perServing.measure.quantity} {perServing.measure.unit}</th>}
         </tr>
       </thead>
-      <tbody>
-        {/* Iterate over each row */}
+      <tbody className={styles?.tbody}>
         {rows.map((row, idx) => (
-          <tr key={`fact-${row}-${idx}`} className="[&>*]:px-[8px] [&>*]:py-[8px]">
-            <td className="text-left">{row}</td>
+          <tr key={`fact-${row}-${idx}`} className={styles?.tr}>
+            <td className="text-left rounded-bl-lg">{row}</td>
             <td className="text-right !pr-4">{parseFloat(total[row].quantity.toFixed(2))} {total[row].unit}</td>
             {perServing && <td className="text-right !pl-0.5">{parseFloat(perServing[row].quantity.toFixed(2))} {perServing[row].unit}</td>}
           </tr>
