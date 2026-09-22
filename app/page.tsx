@@ -163,9 +163,16 @@ export default function Page() {
             table: "text-white p-4 w-full",
             thead: "h-[42] w-[120]",
             tr: "[&>*]:px-[8px] [&>*]:py-[8px] odd:bg-green-500 even:bg-green-400",
+            tabs: {
+              on: "rounded-lg bg-green-400 hover:cursor-pointer",
+              off: "rounded-lg bg-green-500 hover:cursor-pointer",
+            }
           }}
           ingredients={cheesecake}
-          options={{ servings: 16 }}
+          options={{
+            servings: 16,
+            unitConversion: true,
+          }}
         />
 
         <h2 className="text-xl text-black font-bold mb-4">NutritionFacts</h2>

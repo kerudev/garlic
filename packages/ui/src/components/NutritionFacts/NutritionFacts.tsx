@@ -1,4 +1,7 @@
-import { Ingredient, NutritionFactsKey, Measure, SystemWeightUnit, NutritionFacts as NutritionFactsType } from "@garlic/types";
+import { Ingredient, NutritionFactsKey, Measure, SystemWeightUnit, NutritionFacts as NutritionFactsType, unitSystems } from "@garlic/types";
+import { Tabs } from "@garlic/ui";
+
+import { TabsStyles } from "../Tabs/Tabs";
 
 type Serving = Measure<SystemWeightUnit> | number;
 
@@ -9,6 +12,7 @@ interface NutritionFactsStyles {
   tr?: string
   th?: string
   td?: string
+  tabs?: TabsStyles
 }
 
 interface NutritionFactsProps {
@@ -16,6 +20,7 @@ interface NutritionFactsProps {
   styles?: NutritionFactsStyles
   options?: {
     servings?: Serving
+    unitConversion?: boolean
   }
 }
 
@@ -93,29 +98,38 @@ export default function NutritionFacts({ ingredients, styles, options }: Nutriti
       : `${nServings} aprox. servings`
     : "";
 
+  // const onTabChange = (index: number) => {
+  //   console.log(index);
+  // };
+
   return (
-    <table className={`${styles?.table ? styles.table : ""} rounded-lg overflow-hidden`}>
-      <thead className={styles?.thead}>
-        <tr className={`${styles?.tr ? styles.tr : ""} align-top`}>
-          <th></th>
-          <th className="text-right !pr-4 w-50">Total{servingsText && <><br />{servingsText}</>}</th>
-          {perServing && <th className="text-right !pl-0.5 w-50">Per serving</th>}
-        </tr>
-        <tr className={styles?.tr}>
-          <th className="text-left">Values</th>
-          <th className="text-right !pr-4 w-50">{total.measure.quantity} {total.measure.unit}</th>
-          {perServing && <th className="text-right !pl-0.5 w-50">{perServing.measure.quantity} {perServing.measure.unit}</th>}
-        </tr>
-      </thead>
-      <tbody className={styles?.tbody}>
-        {rows.map((row, idx) => (
-          <tr key={`fact-${row}-${idx}`} className={styles?.tr}>
-            <td className="text-left rounded-bl-lg">{row}</td>
-            <td className="text-right !pr-4">{parseFloat(total[row].quantity.toFixed(2))} {total[row].unit}</td>
-            {perServing && <td className="text-right !pl-0.5">{parseFloat(perServing[row].quantity.toFixed(2))} {perServing[row].unit}</td>}
+    <div className="nutrition-facts-wrapper">
+      {/* {options?.unitConversion && <Tabs tabs={unitSystems} styles={styles?.tabs} onChange={(index: number) => console.log(index)} />} */}
+      {options?.unitConversion && <Tabs tabs={unitSystems} styles={styles?.tabs} />}
+
+      <table className={`${styles?.table ?? ""} rounded-lg overflow-hidden`}>
+        <thead className={styles?.thead}>
+          <tr className={`${styles?.tr ?? ""} align-top`}>
+            <th></th>
+            <th className="text-right !pr-4 w-50">Total{servingsText && <><br />{servingsText}</>}</th>
+            {perServing && <th className="text-right !pl-0.5 w-50">Per serving</th>}
           </tr>
-        ))}
-      </tbody>
-    </table>
+          <tr className={styles?.tr}>
+            <th className="text-left">Values</th>
+            <th className="text-right !pr-4 w-50">{total.measure.quantity} {total.measure.unit}</th>
+            {perServing && <th className="text-right !pl-0.5 w-50">{perServing.measure.quantity} {perServing.measure.unit}</th>}
+          </tr>
+        </thead>
+        <tbody className={styles?.tbody}>
+          {rows.map((row, idx) => (
+            <tr key={`fact-${row}-${idx}`} className={styles?.tr}>
+              <td className="text-left rounded-bl-lg">{row}</td>
+              <td className="text-right !pr-4">{parseFloat(total[row].quantity.toFixed(2))} {total[row].unit}</td>
+              {perServing && <td className="text-right !pl-0.5">{parseFloat(perServing[row].quantity.toFixed(2))} {perServing[row].unit}</td>}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
