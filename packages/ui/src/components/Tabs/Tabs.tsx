@@ -1,19 +1,22 @@
 "use client";
 
-import { useState } from "react";
-
 export interface TabsStyles {
   on?: string
   off?: string
 }
 
 interface TabsProps {
-  tabs: string[]
+  tabs: readonly string[]
+  active?: number
+  onChange?: (active: number) => void
   styles?: TabsStyles
 }
 
-export default function Tabs({ tabs, styles }: TabsProps) {
-  const [current, setCurrent] = useState(0);
+export default function Tabs({ tabs, active, onChange, styles }: TabsProps) {
+  active ??= 0;
+  if (active >= tabs.length) {
+    throw new Error(`active (${active}) can't be higher or equal than tabs length (${tabs.length})`);
+  }
 
   return (
     <div className="flex flex-row-reverse">
@@ -33,8 +36,8 @@ export default function Tabs({ tabs, styles }: TabsProps) {
         {tabs.map((tab, idx) => (
           <button
             key={`tab-${idx}`}
-            onClick={() => setCurrent(idx)}
-            className={current == idx ? styles?.on : styles?.off}
+            onClick={() => onChange?.(idx)}
+            className={active == idx ? styles?.on : styles?.off}
           >
             {tab}
           </button>

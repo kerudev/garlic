@@ -51,7 +51,9 @@ export const units = [
   ...caloriesUnits,
 ] as const;
 
-export type UnitSystem = "metric" | "imperial";
+export const unitSystems = ["metric", "imperial"] as const;
+export type UnitSystem = typeof unitSystems[number];
+
 export type MeasureUnit = WeightUnit | FluidUnit | CaloriesUnit;
 
 export type MetricUnit =
