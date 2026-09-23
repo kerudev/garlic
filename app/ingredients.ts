@@ -1,11 +1,14 @@
-import { Ingredient, Measure, NutritionFacts, SystemWeightUnit } from "@garlic/types";
+import { IngredientObject, Measure, NutritionFacts, SystemWeightUnit } from "@garlic/types";
 
 export const vegetablesString = [
   { name: "onion", measure: "1 unit" },
   { name: "garlic", measure: "3 head" },
 ];
 
-export const vegetables: Ingredient[] = vegetablesString.map(obj => ({ name: obj.name, measure: Measure.fromString(obj.measure) }));
+export const vegetables: IngredientObject[] = vegetablesString.map(obj => ({
+  name: obj.name,
+  measure: Measure.fromString(obj.measure).toObject()
+}));
 
 export const cheesecakeIngredients = [
   {
@@ -87,18 +90,16 @@ export const cheesecakeIngredients = [
 ];
 
 export const cheesecake = cheesecakeIngredients.map((obj) => {
-  const ingredient: Ingredient = { name: obj.name, measure: Measure.fromString(obj.measure) };
-
-  if (obj.nutritionFacts !== undefined) {
-    if (obj.nutritionFacts !== undefined) {
-      ingredient.nutritionFacts = NutritionFacts.fromObject(obj.nutritionFacts);
-    }
-  }
-
-  return ingredient;
+  return {
+    name: obj.name,
+    measure: Measure.fromString(obj.measure).toObject(),
+    nutritionFacts: obj.nutritionFacts
+      ? NutritionFacts.fromObject(obj.nutritionFacts).toObject()
+      : undefined
+  };
 });
 
-export const cheesecakeServing = Measure.fromString<SystemWeightUnit>("125 g");
+export const cheesecakeServing = Measure.fromString<SystemWeightUnit>("125 g").toObject();
 
 export const steps = [
   "Mix the liquids",

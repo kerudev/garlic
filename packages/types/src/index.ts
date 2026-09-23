@@ -93,6 +93,10 @@ export class Measure<T extends MeasureUnit> {
     return new Measure(obj.quantity, obj.unit);
   }
 
+  toObject(): MeasureObject<T> {
+    return { quantity: this.quantity, unit: this.unit };
+  }
+
   static fromString<T extends MeasureUnit>(measure: string): Measure<T> {
     const parts = measure.split(" ", 2);
 
@@ -132,23 +136,23 @@ export class NutritionFacts {
     public serving?: Measure<WeightUnit>,
   ) { }
 
-  static fromRaw(raw: RawNutritionFacts): NutritionFacts {
-    return {
-      measure: Measure.fromObject(raw.measure),
-      calories: Measure.fromObject(raw.calories),
-      fat: Measure.fromObject(raw.fat),
-      carbs: Measure.fromObject(raw.carbs),
-      protein: Measure.fromObject(raw.protein),
-      salt: Measure.fromObject(raw.salt)
-    };
+  static fromRaw(raw: NutritionFactsObject): NutritionFacts {
+    return new NutritionFacts(
+      Measure.fromObject(raw.measure),
+      Measure.fromObject(raw.calories),
+      Measure.fromObject(raw.fat),
+      Measure.fromObject(raw.carbs),
+      Measure.fromObject(raw.protein),
+      Measure.fromObject(raw.salt),
+      raw.serving
+        ? Measure.fromObject(raw.serving)
+        : undefined,
+    );
   }
 
   static fromObject(obj: Record<string, string>): NutritionFacts {
     const values = Object.fromEntries(
-      Object.entries(obj).map(([key, value]) => [
-        key,
-        Measure.fromString(value),
-      ])
+      Object.entries(obj).map(([key, value]) => [key, Measure.fromString(value)])
     );
 
     return Object.assign(
@@ -156,13 +160,31 @@ export class NutritionFacts {
       values
     );
   }
+
+  toObject(): NutritionFactsObject {
+    return {
+      measure: this.measure.toObject(),
+      calories: this.calories.toObject(),
+      fat: this.fat.toObject(),
+      carbs: this.carbs.toObject(),
+      protein: this.protein.toObject(),
+      salt: this.salt.toObject(),
+      serving: this.serving?.toObject(),
+    };
+  }
 };
 
-export type RawNutritionFacts = {
-  [K in keyof NutritionFacts]: NutritionFacts[K] extends Measure<infer U> ? MeasureObject<U> : never
+export type NutritionFactsObject = {
+  calories: MeasureObject<CaloriesUnit>
+  measure: MeasureObject<WeightUnit>
+  fat: MeasureObject<WeightUnit>
+  carbs: MeasureObject<WeightUnit>
+  protein: MeasureObject<WeightUnit>
+  salt: MeasureObject<WeightUnit>
+  serving?: MeasureObject<WeightUnit>
 };
 
-export type NutritionFactsKey = keyof Omit<NutritionFacts, "measure" | "serving">;
+export type NutritionFactsKey = keyof Omit<NutritionFactsObject, "measure" | "serving">;
 
 /** Represents an ingredient. */
 export type Ingredient = {
@@ -170,4 +192,11 @@ export type Ingredient = {
   measure: Measure<MeasureUnit>
   serving?: Measure<MeasureUnit>
   nutritionFacts?: NutritionFacts
+};
+
+export type IngredientObject = {
+  name: string
+  measure: MeasureObject<MeasureUnit>
+  serving?: MeasureObject<MeasureUnit>
+  nutritionFacts?: NutritionFactsObject
 };
