@@ -1,4 +1,4 @@
-import { NutritionFactsKey, Measure, NutritionFactsObject, SystemWeightUnit, IngredientObject, MeasureObject } from "@garlic/types";
+import { NutritionFactsKey, Measure, NutritionFactsObject, SystemWeightUnit, IngredientObject, MeasureObject, WeightUnit } from "@garlic/types";
 
 type Serving = MeasureObject<SystemWeightUnit> | number;
 
@@ -29,13 +29,16 @@ const rows: NutritionFactsKey[] = [
 ] as const;
 
 const getNutritionInfo = (ingredients: IngredientObject[], servings?: Serving): [NutritionFactsObject, NutritionFactsObject | null] => {
+  // TODO do this automatically
+  const unit = ingredients[0].measure.unit as WeightUnit;
+
   const total: NutritionFactsObject = {
-    measure: { quantity: 0, unit: "g" },
+    measure: { quantity: 0, unit: unit },
     calories: { quantity: 0, unit: "kcal" },
-    fat: { quantity: 0, unit: "g" },
-    carbs: { quantity: 0, unit: "g" },
-    protein: { quantity: 0, unit: "g" },
-    salt: { quantity: 0, unit: "g" },
+    fat: { quantity: 0, unit: unit },
+    carbs: { quantity: 0, unit: unit },
+    protein: { quantity: 0, unit: unit },
+    salt: { quantity: 0, unit: unit },
   };
 
   ingredients.forEach((ingredient: IngredientObject) => {
