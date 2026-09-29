@@ -42,29 +42,40 @@ export const caloriesUnits = ["kcal", "kJ"] as const;
 export type CaloriesUnit = typeof caloriesUnits[number];
 
 // unit systems
-export const units = [
-  ...metricFluidUnits,
-  ...imperialFluidUnits,
-  ...metricWeightUnits,
-  ...imperialWeightUnits,
-  ...unitaryWeightUnits,
-  ...caloriesUnits,
-] as const;
-
 export const unitSystems = ["metric", "imperial"] as const;
 export type UnitSystem = typeof unitSystems[number];
 
 export type MeasureUnit = WeightUnit | FluidUnit | CaloriesUnit;
 
-export type MetricUnit =
-  | MetricTemperatureUnit
-  | MetricFluidUnit
-  | MetricWeightUnit;
+export const metricUnits = [
+  ...metricWeightUnits,
+  ...metricFluidUnits,
+  "C",
+] as const;
 
-export type ImperialUnit =
-  | ImperialTemperatureUnit
-  | ImperialFluidUnit
-  | ImperialWeightUnit;
+export const metricUnitsSet = new Set(metricUnits);
+
+export const imperialUnits = [
+  ...imperialWeightUnits,
+  ...imperialFluidUnits,
+  "T",
+] as const;
+
+export const imperialUnitsSet = new Set(imperialUnits);
+
+export const units = [
+  ...metricUnits,
+  ...imperialUnits,
+  ...unitaryWeightUnits,
+  ...caloriesUnits,
+] as const;
+
+export const unitsSet = new Set(units);
+
+export type MetricUnit = typeof metricUnits[number];
+export type ImperialUnit = typeof imperialUnits[number];
+
+// data structures
 
 export type MeasureObject<T extends MeasureUnit> = { quantity: number, unit: T };
 export type MeasureString<T extends MeasureUnit> = `${number} ${T}`;
@@ -103,7 +114,7 @@ export class Measure<T extends MeasureUnit> {
     const quantity = Number(parts[0]);
     const unit = parts[1] as T;
 
-    if (!units.includes(unit))
+    if (!unitsSet.has(unit))
       throw new Error(`Invalid unit on "${measure}". Got ${unit}, but must be one of the following: ${units.join(", ")}`);
 
     return new Measure(quantity, unit);
