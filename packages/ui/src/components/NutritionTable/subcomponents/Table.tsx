@@ -1,8 +1,8 @@
-import { NutritionFactsKey, Measure, NutritionFactsObject, SystemWeightUnit, IngredientObject, MeasureObject, WeightUnit } from "@garlic/types";
+import { nutritionFactsKeys as rows, Measure, NutritionFactsObject, SystemWeightUnit, IngredientObject, MeasureObject, WeightUnit } from "@garlic/types";
 
 type Serving = MeasureObject<SystemWeightUnit> | number;
 
-interface Styles {
+interface TableStyles {
   table?: string
   thead?: string
   tbody?: string
@@ -11,22 +11,14 @@ interface Styles {
   td?: string
 }
 
-interface Props {
+interface TableProps {
   ingredients: IngredientObject[]
-  styles?: Styles
+  styles?: TableStyles
   options?: {
     servings?: Serving
     unitConversion?: boolean
   }
 }
-
-const rows: NutritionFactsKey[] = [
-  "calories",
-  "fat",
-  "carbs",
-  "protein",
-  "salt",
-] as const;
 
 const getNutritionInfo = (ingredients: IngredientObject[], servings?: Serving): [NutritionFactsObject, NutritionFactsObject | null] => {
   // TODO do this automatically
@@ -87,7 +79,7 @@ const getServings = (total: number, serving?: Serving): [number, boolean] => {
   return [Math.round(s), true];
 };
 
-export default function Table({ ingredients, styles, options }: Props) {
+export default function Table({ ingredients, styles, options }: TableProps) {
   const [total, perServing] = getNutritionInfo(ingredients, options?.servings);
 
   const [nServings, isRounded] = getServings(total.measure.quantity, options?.servings);

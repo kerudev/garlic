@@ -1,11 +1,11 @@
 import { NutritionFactsProps } from "./types";
 
-import { Client } from "./Client";
+import NutritionTableClient from "./subcomponents/NutritionTableClient";
 
 export default function NutritionFacts({ ingredients, styles, options }: NutritionFactsProps) {
   return (
     <div className="nutrition-facts-wrapper">
-      <Client
+      <NutritionTableClient
         ingredients={ingredients}
         styles={styles}
         options={options}
