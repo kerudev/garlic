@@ -2,17 +2,7 @@
 
 import { useState } from "react";
 
-export interface TabsStyles {
-  on?: string
-  off?: string
-}
-
-interface TabsProps {
-  tabs: readonly string[]
-  active?: number
-  onChange?: (active: number) => void
-  styles?: TabsStyles
-}
+import { TabsProps } from "./types";
 
 export default function Tabs({ tabs, active = 0, onChange, styles }: TabsProps) {
   if (active >= tabs.length) {

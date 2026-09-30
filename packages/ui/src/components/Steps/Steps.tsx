@@ -1,12 +1,4 @@
-type StepsKind = "list" | "circles";
-
-interface StepsProps {
-  steps: string[]
-  className?: string
-  options?: {
-    kind?: StepsKind
-  }
-}
+import { StepsProps } from "./types";
 
 const StepsList = (steps: string[], className?: string) => {
   return (

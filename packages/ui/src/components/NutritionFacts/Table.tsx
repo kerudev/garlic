@@ -107,8 +107,8 @@ export default function Table({ ingredients, styles, options }: Props) {
         </tr>
         <tr className={styles?.tr}>
           <th className="text-left">Values</th>
-          <th className="text-right !pr-4 w-50">{total.measure.quantity} {total.measure.unit}</th>
-          {perServing && <th className="text-right !pl-0.5 w-50">{perServing.measure.quantity} {perServing.measure.unit}</th>}
+          <th className="text-right !pr-4 w-50">{total.measure.quantity.toFixed(2)} {total.measure.unit}</th>
+          {perServing && <th className="text-right !pl-0.5 w-50">{perServing.measure.quantity.toFixed(2)} {perServing.measure.unit}</th>}
         </tr>
       </thead>
       <tbody className={styles?.tbody}>
