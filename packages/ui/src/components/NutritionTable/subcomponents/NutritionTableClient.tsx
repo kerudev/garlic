@@ -1,25 +1,14 @@
 "use client";
 
-import { IngredientObject, MeasureObject, SystemWeightUnit, UnitSystem, unitSystems } from "@garlic/types";
-
-import { getConversionRatio, Tabs } from "@garlic/ui";
-import Table from "./Table";
 import { useState } from "react";
-import { NutritionFactsStyles } from "./types";
 
-type Serving = MeasureObject<SystemWeightUnit> | number;
+import { unitSystems } from "@garlic/types";
+import { getConversionRatio, Tabs } from "@garlic/ui";
 
-interface Props {
-  ingredients: IngredientObject[]
-  styles?: NutritionFactsStyles
-  options?: {
-    servings?: Serving
-    unitConversion?: boolean
-    unitSystem?: UnitSystem
-  }
-}
+import Table from "./Table";
+import { NutritionTableClientProps } from "./types";
 
-export function Client({ ingredients, styles, options }: Props) {
+export default function NutritionTableClient({ ingredients, styles, options }: NutritionTableClientProps) {
   const [_ingredients, setIngredients] = useState(ingredients);
 
   const [current, setCurrent] = useState(options?.unitSystem
