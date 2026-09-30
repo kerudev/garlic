@@ -1,9 +1,4 @@
-import type { IngredientObject } from "@garlic/types";
-
-interface IngredientsProps {
-  ingredients: IngredientObject[]
-  className?: string
-}
+import { IngredientsProps } from "./types";
 
 export default function Ingredients({ ingredients, className }: IngredientsProps) {
   return (

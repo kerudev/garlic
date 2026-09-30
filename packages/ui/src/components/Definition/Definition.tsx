@@ -2,14 +2,9 @@
 
 import { useHover } from "@uidotdev/usehooks";
 
-import Tooltip, { TooltipProps } from "../Tooltip/Tooltip";
+import { DefinitionProps } from "./types";
 
-interface DefinitionProps {
-  definition: string
-  className?: string
-  tooltip: TooltipProps
-  children: string
-}
+import Tooltip from "../Tooltip/Tooltip";
 
 export default function Definition({ definition, className, tooltip, children }: DefinitionProps) {
   const [ref, hovering] = useHover();

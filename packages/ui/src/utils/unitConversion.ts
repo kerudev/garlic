@@ -1,24 +1,4 @@
-import { MeasureUnit } from "@garlic/types";
-
-const metricToImperial: Record<string, Record<string, number>> = {
-  g: {
-    lb: 2.2046 / 1000,
-    oz: 35.2739 / 1000,
-  },
-};
-
-const imperialToMetric: Record<string, Record<string, number>> = {};
-for (const [metric, units] of Object.entries(metricToImperial)) {
-  for (const [imperial, ratio] of Object.entries(units)) {
-    if (typeof imperialToMetric[imperial] === "undefined") imperialToMetric[imperial] = {};
-    imperialToMetric[imperial][metric] = 1 / ratio;
-  }
-}
-
-const unitTable = {
-  ...metricToImperial,
-  ...imperialToMetric,
-};
+import { MeasureUnit, unitTable } from "@garlic/types";
 
 export function getConversionRatio<T extends MeasureUnit>(from: T, to: T): number {
   return unitTable[from][to] ?? 1;

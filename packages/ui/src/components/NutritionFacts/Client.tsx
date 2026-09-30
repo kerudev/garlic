@@ -3,25 +3,15 @@
 import { IngredientObject, MeasureObject, SystemWeightUnit, UnitSystem, unitSystems } from "@garlic/types";
 
 import { getConversionRatio, Tabs } from "@garlic/ui";
-import { TabsStyles } from "../Tabs/Tabs";
 import Table from "./Table";
 import { useState } from "react";
+import { NutritionFactsStyles } from "./types";
 
 type Serving = MeasureObject<SystemWeightUnit> | number;
 
-interface Styles {
-  table?: string
-  thead?: string
-  tbody?: string
-  tr?: string
-  th?: string
-  td?: string
-  tabs?: TabsStyles
-}
-
 interface Props {
   ingredients: IngredientObject[]
-  styles?: Styles
+  styles?: NutritionFactsStyles
   options?: {
     servings?: Serving
     unitConversion?: boolean

@@ -58,3 +58,27 @@ export const units = [
 ] as const;
 
 export const unitsSet = new Set(units);
+
+//////////////////////////////
+// Unit conversion
+//////////////////////////////
+
+const metricToImperial: Record<string, Record<string, number>> = {
+  g: {
+    lb: 2.2046 / 1000,
+    oz: 35.2739 / 1000,
+  },
+};
+
+const imperialToMetric: Record<string, Record<string, number>> = {};
+for (const [metric, units] of Object.entries(metricToImperial)) {
+  for (const [imperial, ratio] of Object.entries(units)) {
+    if (typeof imperialToMetric[imperial] === "undefined") imperialToMetric[imperial] = {};
+    imperialToMetric[imperial][metric] = 1 / ratio;
+  }
+}
+
+export const unitTable = {
+  ...metricToImperial,
+  ...imperialToMetric,
+};
