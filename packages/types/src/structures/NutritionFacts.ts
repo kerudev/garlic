@@ -1,5 +1,5 @@
 import { Measure, MeasureObject } from "./Measure";
-import { WeightUnit, CaloriesUnit } from "../types";
+import { CaloriesUnit, WeightUnit } from "../types";
 
 /** Represents the nutrition facts of an ingredient. */
 export class NutritionFacts {

@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { unitSystems } from "@garlic/types";
-import { getConversionRatio, Tabs } from "@garlic/ui";
+import { Tabs, getConversionRatio } from "@garlic/ui";
 
 import Table from "./Table";
 import { NutritionTableClientProps } from "./types";

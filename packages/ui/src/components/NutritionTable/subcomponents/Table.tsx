@@ -1,4 +1,4 @@
-import { nutritionFactsKeys as rows, Measure, NutritionFactsObject, SystemWeightUnit, IngredientObject, MeasureObject, WeightUnit } from "@garlic/types";
+import { IngredientObject, Measure, MeasureObject, NutritionFactsObject, SystemWeightUnit, WeightUnit, nutritionFactsKeys as rows } from "@garlic/types";
 
 type Serving = MeasureObject<SystemWeightUnit> | number;
 

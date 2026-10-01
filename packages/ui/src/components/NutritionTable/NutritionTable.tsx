@@ -1,6 +1,5 @@
-import { NutritionFactsProps } from "./types";
-
 import NutritionTableClient from "./subcomponents/NutritionTableClient";
+import { NutritionFactsProps } from "./types";
 
 export default function NutritionFacts({ ingredients, styles, options }: NutritionFactsProps) {
   return (

@@ -10,7 +10,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint -d app packages"
+    "lint": "npx eslint",
+    "lint:fix": "npx eslint --fix"
   },
   "dependencies": {
     "@uidotdev/usehooks": "^2.4.1",

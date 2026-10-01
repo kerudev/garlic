@@ -1,5 +1,5 @@
+import { arrowMapping, positionMapping } from "./constants";
 import { TooltipProps } from "./types";
-import { positionMapping, arrowMapping } from "./constants";
 
 export default function Tooltip({ position, show, className, children }: TooltipProps) {
   if (!position) position = "top";

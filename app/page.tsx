@@ -1,5 +1,6 @@
-import { cheesecake, cheesecakeServing, steps, vegetables } from "./ingredients";
 import { Definition, Ingredients, NutritionFacts, Steps } from "@garlic/ui";
+
+import { cheesecake, cheesecakeServing, steps, vegetables } from "./ingredients";
 
 export default function Page() {
   return (
