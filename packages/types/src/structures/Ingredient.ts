@@ -1,6 +1,5 @@
 import { Measure, MeasureObject } from "./Measure";
 import { NutritionFacts, NutritionFactsObject } from "./NutritionFacts";
-
 import { MeasureUnit } from "../types";
 
 /** Represents an ingredient. */

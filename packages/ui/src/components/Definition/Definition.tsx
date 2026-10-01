@@ -3,7 +3,6 @@
 import { useHover } from "@uidotdev/usehooks";
 
 import { DefinitionProps } from "./types";
-
 import Tooltip from "../Tooltip/Tooltip";
 
 export default function Definition({ definition, className, tooltip, children }: DefinitionProps) {

@@ -1,5 +1,5 @@
-import { MeasureUnit } from "../types";
 import { unitsSet } from "../constants";
+import { MeasureUnit } from "../types";
 
 export type MeasureObject<T extends MeasureUnit> = { quantity: number, unit: T };
 export type MeasureString<T extends MeasureUnit> = `${number} ${T}`;
