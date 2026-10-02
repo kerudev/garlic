@@ -1,5 +1,6 @@
 import { TooltipPosition } from "./types";
 
+/** Tailwind classes that indicate the position of the tooltip. */
 export const positionMapping: Record<TooltipPosition, string> = {
   "top-left": "bottom-full right-0 mb-2",
   top: "bottom-full left-1/2 mb-2 -translate-x-1/2",
@@ -13,6 +14,13 @@ export const positionMapping: Record<TooltipPosition, string> = {
   "bottom-right": "top-full left-0 mt-2",
 };
 
+/**
+ * Tailwind classes that indicate the position of the arrow that connects the
+ * tooltip with the definition.
+ *
+ * Note that these arrows mirror the position of the tooltip. For example, if
+ * the box is on the left, the arrow will be on the right side of the box.
+ */
 export const arrowMapping: Record<TooltipPosition, string> = {
   "top-left": "after:top-full after:right-4 after:border-x-8 after:border-t-8 after:border-x-transparent",
   top: "after:top-full after:left-1/2 after:-translate-x-1/2 after:border-x-8 after:border-t-8 after:border-x-transparent",

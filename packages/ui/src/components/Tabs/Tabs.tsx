@@ -4,6 +4,10 @@ import { useState } from "react";
 
 import { TabsProps } from "./types";
 
+/**
+ * A row of buttons that is useful to switch between different content.
+ * @see {@link TabsProps}
+ */
 export default function Tabs({ tabs, active = 0, onChange, styles }: TabsProps) {
   if (active >= tabs.length) {
     throw new Error(`active (${active}) can't be higher or equal than tabs length (${tabs.length})`);

@@ -1,5 +1,9 @@
 import { IngredientsProps } from "./types";
 
+/**
+ * An unordered list of ingredients.
+ * @see {@link IngredientsProps}
+ */
 export default function Ingredients({ ingredients, className }: IngredientsProps) {
   return (
     <div className={className}>

@@ -1,6 +1,10 @@
 import { arrowMapping, positionMapping } from "./constants";
 import { TooltipProps } from "./types";
 
+/**
+ * A box that contains text and points an arrow to its target.
+ * @see {@link TooltipProps}
+ */
 export default function Tooltip({ position, show, className, children }: TooltipProps) {
   if (!position) position = "top";
   if (!show) return null;
