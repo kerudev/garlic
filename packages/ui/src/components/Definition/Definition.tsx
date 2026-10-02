@@ -2,9 +2,15 @@
 
 import { useHover } from "@uidotdev/usehooks";
 
-import { DefinitionProps } from "./types";
-import Tooltip from "../Tooltip/Tooltip";
+import { Tooltip } from "@garlic/ui";
 
+import { DefinitionProps } from "./types";
+
+/**
+ * Shows a tooltip when hovering over text. Definitions are meant to give extra
+ * context when needed.
+ * @see {@link DefinitionProps}
+ */
 export default function Definition({ definition, className, tooltip, children }: DefinitionProps) {
   const [ref, hovering] = useHover();
 

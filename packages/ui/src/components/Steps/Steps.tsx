@@ -21,6 +21,13 @@ const StepsCircles = (steps: string[], className?: string) => {
   );
 };
 
+/**
+ * A list of ordered steps to follow. There are many formats:
+ * - "list": regular list format.
+ * - "circle": each number is inside a circle.
+ *
+ * @see {@link StepsProps}
+ */
 export default function Steps({ steps, className, options }: StepsProps) {
   switch (options?.kind ?? "list") {
     case "list": return StepsList(steps, className);
