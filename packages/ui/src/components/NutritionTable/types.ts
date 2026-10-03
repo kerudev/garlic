@@ -1,34 +1,20 @@
-import { IngredientObject, MeasureObject, SystemWeightUnit } from "@garlic/types";
+import { IngredientObject, Serving } from "@garlic/types";
 
 import { TabsStyles } from "../Tabs/types";
-
-/**
- * The library behaves differently depending on the type of Serving:
- * - {@link MeasureObject}: used to calculate a number of servings, then
- *   used to divide an amount to get the amount per serving.
- * - number: used to divide an amount to get the amount per serving.
- */
-export type Serving = MeasureObject<SystemWeightUnit> | number;
 
 export interface NutritionFactsStyles {
   /** Tailwind/CSS class(es) of the component. */
   table?: string
-
   /** Tailwind/CSS class(es) of the component. */
   thead?: string
-
   /** Tailwind/CSS class(es) of the component. */
   tbody?: string
-
   /** Tailwind/CSS class(es) of the component. */
   tr?: string
-
   /** Tailwind/CSS class(es) of the component. */
   th?: string
-
   /** Tailwind/CSS class(es) of the component. */
   td?: string
-
   /** Tailwind/CSS class(es) of the tabs. */
   tabs?: TabsStyles
 }

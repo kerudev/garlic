@@ -1,7 +1,6 @@
 export interface TabsStyles {
   /** Tailwind/CSS class(es) of the active tab. */
   on?: string
-
   /** Tailwind/CSS class(es) of the inactive tab. */
   off?: string
 }
