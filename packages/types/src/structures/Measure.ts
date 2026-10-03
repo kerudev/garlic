@@ -5,7 +5,9 @@ export type MeasureObject<T extends MeasureUnit> = { quantity: number, unit: T }
 export type MeasureString<T extends MeasureUnit> = `${number} ${T}`;
 
 export class Measure<T extends MeasureUnit> {
+  /** Amount of the measurement. */
   quantity: number;
+  /** Unit in which the measurement is expressed. */
   unit: T;
 
   constructor(quantity: number, unit: T) {

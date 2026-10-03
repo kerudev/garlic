@@ -1,15 +1,21 @@
 import { Measure, MeasureObject } from "./Measure";
 import { CaloriesUnit, WeightUnit } from "../types";
 
-/** Represents the nutrition facts of an ingredient. */
 export class NutritionFacts {
   constructor(
+    /** Amount the nutrition facts refer to. */
     public measure: Measure<WeightUnit>,
+    /** Energy content. */
     public calories: Measure<CaloriesUnit>,
+    /** Fat content. */
     public fat: Measure<WeightUnit>,
+    /** Carbohydrate content. */
     public carbs: Measure<WeightUnit>,
+    /** Protein content. */
     public protein: Measure<WeightUnit>,
+    /** Salt content. */
     public salt: Measure<WeightUnit>,
+    /** Amount per serving. */
     public serving?: Measure<WeightUnit>,
   ) { }
 
