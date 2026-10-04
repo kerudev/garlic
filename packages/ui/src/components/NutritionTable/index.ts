@@ -1,2 +1,2 @@
-export { default as NutritionFacts } from "./NutritionTable";
+export { default as NutritionTable } from "./NutritionTable";
 export * from "./types";

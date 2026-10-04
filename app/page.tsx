@@ -1,4 +1,4 @@
-import { Definition, Ingredients, NutritionFacts, Steps } from "@garlic/ui";
+import { Definition, Ingredients, NutritionTable, Steps } from "@garlic/ui";
 
 import { cheesecake, cheesecakeServing, steps, vegetables } from "./ingredients";
 
@@ -137,10 +137,10 @@ export default function Page() {
           ingredients={vegetables}
         />
 
-        <h2 className="text-xl text-black font-bold mb-4">NutritionFacts</h2>
+        <h2 className="text-xl text-black font-bold mb-4">NutritionTable</h2>
 
         <h3 className="text-l text-black font-bold mb-4">Without servings</h3>
-        <NutritionFacts
+        <NutritionTable
           styles={{
             table: "text-white p-4 w-full",
             thead: "h-[42] w-[120]",
@@ -149,7 +149,7 @@ export default function Page() {
           ingredients={cheesecake}
         />
         <h3 className="text-l text-black font-bold mb-4">Servings as an object</h3>
-        <NutritionFacts
+        <NutritionTable
           styles={{
             table: "text-white p-4 w-full",
             thead: "h-[42] w-[120]",
@@ -159,7 +159,7 @@ export default function Page() {
           options={{ servings: cheesecakeServing }}
         />
         <h3 className="text-l text-black font-bold mb-4">Servings as a number</h3>
-        <NutritionFacts
+        <NutritionTable
           styles={{
             table: "text-white p-4 w-full",
             thead: "h-[42] w-[120]",
@@ -176,19 +176,19 @@ export default function Page() {
           }}
         />
 
-        <h2 className="text-xl text-black font-bold mb-4">NutritionFacts</h2>
+        <h2 className="text-xl text-black font-bold mb-4">NutritionTable</h2>
 
-        <h3 className="text-l text-black font-bold mb-4">Steps kind: list</h3>
+        <h3 className="text-l text-black font-bold mb-4">Steps format: list</h3>
         <Steps
           className="bg-amber-500 text-white p-4 rounded-lg"
           steps={steps}
-          options={{ kind: "list" }}
+          options={{ format: "list" }}
         />
-        <h3 className="text-l text-black font-bold mb-4">Steps kind: circles</h3>
+        <h3 className="text-l text-black font-bold mb-4">Steps format: circles</h3>
         <Steps
           className="bg-amber-500 text-white p-4 rounded-lg"
           steps={steps}
-          options={{ kind: "circles" }}
+          options={{ format: "circles" }}
         />
       </main>
     </div>

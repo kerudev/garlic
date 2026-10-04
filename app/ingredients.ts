@@ -94,7 +94,7 @@ export const cheesecake = cheesecakeIngredients.map((obj) => {
     name: obj.name,
     measure: Measure.fromString(obj.measure).toObject(),
     nutritionFacts: obj.nutritionFacts
-      ? NutritionFacts.fromObject(obj.nutritionFacts).toObject()
+      ? NutritionFacts.fromRecord(obj.nutritionFacts).toObject()
       : undefined
   };
 });

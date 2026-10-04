@@ -2,7 +2,7 @@ import { IngredientObject, Serving } from "@garlic/types";
 
 import { TabsStyles } from "../Tabs/types";
 
-export interface NutritionFactsStyles {
+export interface NutritionTableStyles {
   /** Tailwind/CSS class(es) of the component. */
   table?: string
   /** Tailwind/CSS class(es) of the component. */
@@ -19,15 +19,15 @@ export interface NutritionFactsStyles {
   tabs?: TabsStyles
 }
 
-export interface NutritionFactsProps {
+export interface NutritionTableProps {
   /** List of {@link IngredientObject} used to generate the nutrition facts. */
   ingredients: IngredientObject[]
 
   /**
    * Styles of the component.
-   * @see {@link NutritionFactsStyles}
+   * @see {@link NutritionTableStyles}
    */
-  styles?: NutritionFactsStyles
+  styles?: NutritionTableStyles
 
   options?: {
     /**
