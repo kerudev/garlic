@@ -1,13 +1,13 @@
 import NutritionTableClient from "./subcomponents/NutritionTableClient";
-import { NutritionFactsProps } from "./types";
+import { NutritionTableProps } from "./types";
 
 /**
  * Takes a list of ingredients and formats them into a column that displays the
  * total of each nutrition fact.
  *
- * @see {@link NutritionFactsProps}
+ * @see {@link NutritionTableProps}
  */
-export default function NutritionFacts({ ingredients, styles, options }: NutritionFactsProps) {
+export default function NutritionTable({ ingredients, styles, options }: NutritionTableProps) {
   return (
     <div className="nutrition-facts-wrapper">
       <NutritionTableClient

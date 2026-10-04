@@ -1,5 +1,5 @@
 /** Available formats for the Steps component. */
-export type StepsKind = "list" | "circles";
+export type StepsFormat = "list" | "circles";
 
 export interface StepsProps {
   /** List of steps to follow. */
@@ -8,6 +8,6 @@ export interface StepsProps {
   className?: string
   options?: {
     /** Format of the list. */
-    kind?: StepsKind
+    format?: StepsFormat
   }
 }

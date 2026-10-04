@@ -19,7 +19,7 @@ export class NutritionFacts {
     public serving?: Measure<WeightUnit>,
   ) { }
 
-  static fromRaw(raw: NutritionFactsObject): NutritionFacts {
+  static fromObject(raw: NutritionFactsObject): NutritionFacts {
     return new NutritionFacts(
       Measure.fromObject(raw.measure),
       Measure.fromObject(raw.calories),
@@ -33,7 +33,7 @@ export class NutritionFacts {
     );
   }
 
-  static fromObject(obj: Record<string, string>): NutritionFacts {
+  static fromRecord(obj: Record<string, string>): NutritionFacts {
     const values = Object.fromEntries(
       Object.entries(obj).map(([key, value]) => [key, Measure.fromString(value)])
     );

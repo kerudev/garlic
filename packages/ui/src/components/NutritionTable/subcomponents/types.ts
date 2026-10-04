@@ -1,10 +1,10 @@
 import { IngredientObject, Serving, UnitSystem } from "@garlic/types";
 
-import { NutritionFactsStyles } from "../types";
+import { NutritionTableStyles } from "../types";
 
 export interface NutritionTableClientProps {
   ingredients: IngredientObject[]
-  styles?: NutritionFactsStyles
+  styles?: NutritionTableStyles
   options?: {
     servings?: Serving
     unitConversion?: boolean

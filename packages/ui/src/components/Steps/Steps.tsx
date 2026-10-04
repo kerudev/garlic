@@ -29,7 +29,7 @@ const StepsCircles = (steps: string[], className?: string) => {
  * @see {@link StepsProps}
  */
 export default function Steps({ steps, className, options }: StepsProps) {
-  switch (options?.kind ?? "list") {
+  switch (options?.format ?? "list") {
     case "list": return StepsList(steps, className);
     case "circles": return StepsCircles(steps, className);
   }

@@ -1,2 +1,2 @@
-export { Ingredients, NutritionFacts, Steps, Definition, Tabs, Tooltip } from "./components";
+export { Ingredients, NutritionTable, Steps, Definition, Tabs, Tooltip } from "./components";
 export { getConversionRatio } from "./utils";
