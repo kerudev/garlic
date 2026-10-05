@@ -2,8 +2,6 @@
 // Fluid
 //////////////////////////////
 
-import { NutritionFactsKey } from "./structures";
-
 export const metricFluidUnits = ["l", "ml"] as const;
 export const imperialFluidUnits = ["fl oz", "tsp", "tbsp", "cup"] as const;
 
@@ -84,15 +82,3 @@ export const unitTable = {
   ...metricToImperial,
   ...imperialToMetric,
 };
-
-//////////////////////////////
-// Structures
-//////////////////////////////
-
-export const nutritionFactsKeys: NutritionFactsKey[] = [
-  "calories",
-  "fat",
-  "carbs",
-  "protein",
-  "salt",
-] as const;

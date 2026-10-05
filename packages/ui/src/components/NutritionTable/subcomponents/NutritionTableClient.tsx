@@ -5,7 +5,7 @@ import { useState } from "react";
 import { unitSystems } from "@garlic/types";
 import { Tabs, getConversionRatio } from "@garlic/ui";
 
-import Table from "./Table";
+import Table from "./NutritionTableInner";
 import { NutritionTableClientProps } from "./types";
 
 export default function NutritionTableClient({ ingredients, styles, options }: NutritionTableClientProps) {

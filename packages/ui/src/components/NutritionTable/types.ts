@@ -1,6 +1,9 @@
-import { IngredientObject, Serving } from "@garlic/types";
+import { IngredientObject, NutritionFactsObject, Serving } from "@garlic/types";
 
 import { TabsStyles } from "../Tabs/types";
+
+/** Allowed keys that serve as rows of NutritionTable. */
+export type NutritionFactsKey = keyof Omit<NutritionFactsObject, "measure" | "serving">;
 
 export interface NutritionTableStyles {
   /** Tailwind/CSS class(es) of the component. */

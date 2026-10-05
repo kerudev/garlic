@@ -12,9 +12,6 @@ export type NutritionFactsObject = {
   serving?: MeasureObject<WeightUnit>
 };
 
-/** Allowed keys that serve as rows of NutritionTable. */
-export type NutritionFactsKey = keyof Omit<NutritionFactsObject, "measure" | "serving">;
-
 /** For an object representation, see {@link NutritionFactsObject}. */
 export class NutritionFacts {
   constructor(
