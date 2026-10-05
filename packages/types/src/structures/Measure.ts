@@ -1,9 +1,16 @@
 import { unitsSet } from "../constants";
 import { MeasureUnit } from "../types";
 
-export type MeasureObject<T extends MeasureUnit> = { quantity: number, unit: T };
+/** Check out the full server-side class at {@link Measure} */
 export type MeasureString<T extends MeasureUnit> = `${number} ${T}`;
 
+/** Check out the full server-side class at {@link Measure} */
+export type MeasureObject<T extends MeasureUnit> = { quantity: number, unit: T };
+
+/**
+ * For a string representation, see {@link MeasureString}.
+ * For an object representation, see {@link MeasureObject}.
+ */
 export class Measure<T extends MeasureUnit> {
   /** Amount of the measurement. */
   quantity: number;
