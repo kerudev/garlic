@@ -6,17 +6,17 @@ import { TabsStyles } from "../Tabs/types";
 export type NutritionFactsKey = keyof Omit<NutritionFactsObject, "measure" | "serving">;
 
 export interface NutritionTableStyles {
-  /** Tailwind/CSS class(es) of the component. */
+  /** Tailwind/CSS class(es) of the table element. */
   table?: string
-  /** Tailwind/CSS class(es) of the component. */
+  /** Tailwind/CSS class(es) of the thead element. */
   thead?: string
-  /** Tailwind/CSS class(es) of the component. */
+  /** Tailwind/CSS class(es) of the tbody element. */
   tbody?: string
-  /** Tailwind/CSS class(es) of the component. */
+  /** Tailwind/CSS class(es) of the tr elements. */
   tr?: string
-  /** Tailwind/CSS class(es) of the component. */
+  /** Tailwind/CSS class(es) of the th elements. */
   th?: string
-  /** Tailwind/CSS class(es) of the component. */
+  /** Tailwind/CSS class(es) of the td elements. */
   td?: string
   /** Tailwind/CSS class(es) of the tabs. */
   tabs?: TabsStyles
