@@ -1,6 +1,21 @@
 import { Measure, MeasureObject } from "./Measure";
 import { CaloriesUnit, WeightUnit } from "../types";
 
+/** Check out the full server-side class at {@link NutritionFacts} */
+export type NutritionFactsObject = {
+  calories: MeasureObject<CaloriesUnit>
+  measure: MeasureObject<WeightUnit>
+  fat: MeasureObject<WeightUnit>
+  carbs: MeasureObject<WeightUnit>
+  protein: MeasureObject<WeightUnit>
+  salt: MeasureObject<WeightUnit>
+  serving?: MeasureObject<WeightUnit>
+};
+
+/** Allowed keys that serve as rows of NutritionTable. */
+export type NutritionFactsKey = keyof Omit<NutritionFactsObject, "measure" | "serving">;
+
+/** For an object representation, see {@link NutritionFactsObject}. */
 export class NutritionFacts {
   constructor(
     /** Amount the nutrition facts refer to. */
@@ -56,15 +71,3 @@ export class NutritionFacts {
     };
   }
 };
-
-export type NutritionFactsObject = {
-  calories: MeasureObject<CaloriesUnit>
-  measure: MeasureObject<WeightUnit>
-  fat: MeasureObject<WeightUnit>
-  carbs: MeasureObject<WeightUnit>
-  protein: MeasureObject<WeightUnit>
-  salt: MeasureObject<WeightUnit>
-  serving?: MeasureObject<WeightUnit>
-};
-
-export type NutritionFactsKey = keyof Omit<NutritionFactsObject, "measure" | "serving">;
