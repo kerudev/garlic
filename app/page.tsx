@@ -132,9 +132,21 @@ export default function Page() {
 
         <h2 className="text-xl text-black font-bold mb-4">Ingredients</h2>
 
+        <h3 className="text-l text-black font-bold mb-4">Format: list</h3>
         <Ingredients
           className="bg-blue-500 text-white p-4 rounded-lg"
           ingredients={vegetables}
+          options={{
+            format: "list",
+          }}
+        />
+        <h3 className="text-l text-black font-bold mb-4">Format: checkboxes</h3>
+        <Ingredients
+          className="bg-blue-500 text-white p-4 rounded-lg"
+          ingredients={vegetables}
+          options={{
+            format: "checkboxes",
+          }}
         />
 
         <h2 className="text-xl text-black font-bold mb-4">NutritionTable</h2>
@@ -178,13 +190,13 @@ export default function Page() {
 
         <h2 className="text-xl text-black font-bold mb-4">NutritionTable</h2>
 
-        <h3 className="text-l text-black font-bold mb-4">Steps format: list</h3>
+        <h3 className="text-l text-black font-bold mb-4">Format: list</h3>
         <Steps
           className="bg-amber-500 text-white p-4 rounded-lg"
           steps={steps}
           options={{ format: "list" }}
         />
-        <h3 className="text-l text-black font-bold mb-4">Steps format: circles</h3>
+        <h3 className="text-l text-black font-bold mb-4">Format: circles</h3>
         <Steps
           className="bg-amber-500 text-white p-4 rounded-lg"
           steps={steps}
