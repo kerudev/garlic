@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { IngredientObject } from "@garlic/types";
 
-const Checkbox = (ingredient: IngredientObject) => {
+function Checkbox(ingredient: IngredientObject) {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ const Checkbox = (ingredient: IngredientObject) => {
   );
 };
 
-export const IngredientsCheckboxes = (ingredients: IngredientObject[], className?: string) => {
+export function IngredientsCheckboxes(ingredients: IngredientObject[], className?: string) {
   return (
     <div className={className}>
       <h2 className="text-2xl font-bold mb-2">Ingredients</h2>
