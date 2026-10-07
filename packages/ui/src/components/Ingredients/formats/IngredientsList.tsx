@@ -1,6 +1,6 @@
 import { IngredientObject } from "@garlic/types";
 
-export const IngredientsList = (ingredients: IngredientObject[], className?: string) => {
+export function IngredientsList(ingredients: IngredientObject[], className?: string) {
   return (
     <div className={className}>
       <h2 className="text-2xl font-bold mb-2">Ingredients</h2>

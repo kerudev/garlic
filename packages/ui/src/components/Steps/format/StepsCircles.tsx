@@ -1,4 +1,4 @@
-export const StepsCircles = (steps: string[], className?: string) => {
+export function StepsCircles(steps: string[], className?: string) {
   return (
     <ul className={`${className} list-none`}>
       {steps.map((step, idx) => (
