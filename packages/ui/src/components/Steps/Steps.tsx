@@ -1,28 +1,8 @@
+import { StepsCircles, StepsList } from "./format";
 import { StepsProps } from "./types";
 
-const StepsList = (steps: string[], className?: string) => {
-  return (
-    <ol className={`${className} list-decimal [&>*]:ml-4`}>
-      {steps.map(step => <li key={`step-list-${step}`}><span>{step}</span></li>)}
-    </ol>
-  );
-};
-
-const StepsCircles = (steps: string[], className?: string) => {
-  return (
-    <ul className={`${className} list-none`}>
-      {steps.map((step, idx) => (
-        <li key={`step-circle-${step}`} className="flex items-center gap-4">
-          <span className="w-8 h-8 shrink-0 rounded-full bg-black text-white inline-flex items-center justify-center">{idx + 1}</span>
-          <span>{step}</span>
-        </li>
-      ))}
-    </ul>
-  );
-};
-
 /**
- * A list of ordered steps to follow. There are many formats:
+ * A list of ordered steps to follow. Allowed formats:
  * - "list": regular list format.
  * - "circle": each number is inside a circle.
  *
