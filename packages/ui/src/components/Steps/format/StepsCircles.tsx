@@ -1,4 +1,6 @@
-export function StepsCircles(steps: string[], className?: string) {
+import { StepsFormatProps } from "./types";
+
+export function StepsCircles({ steps, className }: StepsFormatProps) {
   return (
     <ul className={`${className} list-none`}>
       {steps.map((step, idx) => (

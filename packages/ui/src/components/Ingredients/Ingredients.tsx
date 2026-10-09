@@ -10,7 +10,7 @@ import { IngredientsProps } from "./types";
  */
 export default function Ingredients({ ingredients, className, options }: IngredientsProps) {
   switch (options?.format ?? "list") {
-    case "list": return IngredientsList(ingredients, className);
-    case "checkboxes": return IngredientsCheckboxes(ingredients, className);
+    case "list": return <IngredientsList ingredients={ingredients} className={className} />;
+    case "checkboxes": return <IngredientsCheckboxes ingredients={ingredients} className={className} />;
   }
 };
