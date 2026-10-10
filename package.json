@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "build:types": "npm run --prefix packages/types build",
     "start": "next start",
     "lint": "npx eslint",
     "lint:fix": "npx eslint --fix"
