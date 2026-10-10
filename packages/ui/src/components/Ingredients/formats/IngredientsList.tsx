@@ -1,6 +1,6 @@
-import { IngredientObject } from "@garlic/types";
+import { IngredientsFormatProps } from "./types";
 
-export function IngredientsList(ingredients: IngredientObject[], className?: string) {
+export function IngredientsList({ ingredients, className }: IngredientsFormatProps) {
   return (
     <div className={className}>
       <h2 className="text-2xl font-bold mb-2">Ingredients</h2>
