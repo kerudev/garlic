@@ -1,4 +1,4 @@
-import { Definition, Ingredients, NutritionTable, Steps } from "@garlic/ui";
+import { Definition, Ingredients, NutritionTable, RecipeInfo, Steps } from "@garlic/ui";
 
 import { cheesecake, cheesecakeServing, steps, vegetables } from "./ingredients";
 
@@ -146,6 +146,57 @@ export default function Page() {
           ingredients={vegetables}
           options={{
             format: "checkboxes",
+          }}
+        />
+
+        <h2 className="text-xl text-black font-bold mb-4">RecipeInfo</h2>
+
+        <h3 className="text-l text-black font-bold mb-4">Align: right</h3>
+        <RecipeInfo
+          className="bg-indigo-400 text-white p-4 rounded-lg"
+          difficulty="mid"
+          time={{
+            prep: "1h 30min",
+            cook: "1h 30min"
+          }}
+          options={{
+            align: "right",
+          }}
+        />
+        <h3 className="text-l text-black font-bold mb-4">Align: center</h3>
+        <RecipeInfo
+          className="bg-indigo-400 text-white p-4 rounded-lg"
+          difficulty="mid"
+          time={{
+            prep: "1h 30min",
+            cook: "1h 30min"
+          }}
+          options={{
+            align: "center",
+          }}
+        />
+        <h3 className="text-l text-black font-bold mb-4">Align: right</h3>
+        <RecipeInfo
+          className="bg-indigo-400 text-white p-4 rounded-lg"
+          difficulty="mid"
+          time={{
+            prep: "1h 30min",
+            cook: "1h 30min"
+          }}
+          options={{
+            align: "right",
+          }}
+        />
+        <h3 className="text-l text-black font-bold mb-4">Align: space-between</h3>
+        <RecipeInfo
+          className="bg-indigo-400 text-white p-4 rounded-lg"
+          difficulty="mid"
+          time={{
+            prep: "1h 30min",
+            cook: "1h 30min"
+          }}
+          options={{
+            align: "space-between",
           }}
         />
 
