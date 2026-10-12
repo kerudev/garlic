@@ -22,7 +22,7 @@ function Checkbox(ingredient: IngredientObject) {
 export function IngredientsCheckboxes({ ingredients, className }: IngredientsFormatProps) {
   return (
     <div className={className}>
-      <h2 className="text-2xl font-bold mb-2">Ingredients</h2>
+      <p className="text-2xl font-bold mb-2">Ingredients</p>
       <div className="flex flex-col">
         {ingredients.map((ingredient, index) => <Checkbox key={`ingredient-${index}`} {...ingredient} />)}
       </div>
